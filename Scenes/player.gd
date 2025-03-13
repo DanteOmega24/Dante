@@ -4,7 +4,7 @@ const SPEED = 70
 const DASH = 240
 
 var input_direction: get =_get_input_direction
-var  sprite_direction = "Down": get = _get_sprite_direction
+var sprite_direction = "Down": get = _get_sprite_direction
 var dash_velocity := 0.0
 var tween: Tween
 var ui_left = ("ui_left")
@@ -38,6 +38,8 @@ func _physics_process(delta):
 	move_and_slide()
 	
 	set_animation("Walk")
+	if Input.is_action_pressed("ui_accept"):
+		set_animation("Dash")
 
 func set_animation(animation):
 	var direction = "Left" if sprite_direction in ["Left"] else sprite_direction

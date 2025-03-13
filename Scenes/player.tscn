@@ -1,13 +1,30 @@
-[gd_scene load_steps=19 format=3 uid="uid://bumlnahd7ptto"]
+[gd_scene load_steps=24 format=3 uid="uid://bumlnahd7ptto"]
 
 [ext_resource type="Texture2D" uid="uid://bfxkcxdygdqk1" path="res://Sprites/sprite-main-1.png" id="1_0kqqb"]
 [ext_resource type="Script" path="res://Scenes/player.gd" id="1_2l7sg"]
+[ext_resource type="Texture2D" uid="uid://bfu2yyfnkt312" path="res://Sprites/sprite-main-dash.png" id="2_6f5c2"]
 [ext_resource type="Texture2D" uid="uid://dut8kaspf5wh5" path="res://Sprites/sprite-main-1-7.png.png" id="2_784xd"]
 [ext_resource type="Texture2D" uid="uid://cvopm4ibjlod8" path="res://Sprites/sprite-main-directions.png" id="3_51gk5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh6p3"]
 radius = 5.0
 height = 12.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgd3n"]
+atlas = ExtResource("2_6f5c2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h5yut"]
+atlas = ExtResource("2_6f5c2")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlpan"]
+atlas = ExtResource("2_6f5c2")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5hp2"]
+atlas = ExtResource("2_6f5c2")
+region = Rect2(100, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_38xg2"]
 atlas = ExtResource("1_0kqqb")
@@ -59,6 +76,38 @@ region = Rect2(200, 100, 100, 100)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ah6dr"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgd3n")
+}],
+"loop": true,
+"name": &"DashDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h5yut")
+}],
+"loop": true,
+"name": &"DashLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlpan")
+}],
+"loop": true,
+"name": &"DashRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5hp2")
+}],
+"loop": true,
+"name": &"DashUp",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_38xg2")
@@ -114,11 +163,6 @@ animations = [{
 "loop": true,
 "name": &"WalkUp",
 "speed": 10.0
-}, {
-"frames": [],
-"loop": true,
-"name": &"dash",
-"speed": 5.0
 }]
 
 [node name="Player" type="CharacterBody2D"]
@@ -129,5 +173,5 @@ shape = SubResource("CapsuleShape2D_yh6p3")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ah6dr")
-animation = &"WalkUp"
+animation = &"DashDown"
 autoplay = "WalkDown"
