@@ -24,7 +24,8 @@ version_control/autoload_on_startup=true
 
 folder_colors={
 "res://Scenes/": "red",
-"res://Sprites/": "orange"
+"res://Sprites/": "orange",
+"res://TileSet/": "teal"
 }
 
 [rendering]
