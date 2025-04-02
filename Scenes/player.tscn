@@ -271,9 +271,8 @@ shape = SubResource("CapsuleShape2D_yh6p3")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(2.1, 2.1)
 sprite_frames = SubResource("SpriteFrames_ah6dr")
-animation = &"WalkUp"
+animation = &"WalkDown"
 autoplay = "WalkDown"
-frame_progress = 0.792363
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
