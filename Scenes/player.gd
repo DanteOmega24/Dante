@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 70
-const DASH = 240
+const DASH = 300 #change to 240 or less
 
 var input_direction: get =_get_input_direction
 var sprite_direction = "Down": get = _get_sprite_direction
