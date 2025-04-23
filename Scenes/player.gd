@@ -12,7 +12,9 @@ var ui_right = ("ui_right")
 var ui_up = ("ui_up")
 var ui_down = ("ui_down")
 
+
 @onready var sprite = $AnimatedSprite2D
+
 
 func _physics_process(delta):
 	velocity = input_direction * SPEED
@@ -44,6 +46,8 @@ func _physics_process(delta):
 func set_animation(animation):
 	var direction = "Left" if sprite_direction in ["Left"] else sprite_direction
 	sprite.play(animation + direction)
+	
+
 
 func _get_input_direction():
 	var x = -int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right"))
