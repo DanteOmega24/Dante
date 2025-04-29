@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Global="*res://scripts/global.gd"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -25,7 +29,8 @@ version_control/autoload_on_startup=true
 folder_colors={
 "res://Scenes/": "red",
 "res://Sprites/": "orange",
-"res://TileSet/": "teal"
+"res://TileSet/": "teal",
+"res://scripts/": "purple"
 }
 
 [rendering]
