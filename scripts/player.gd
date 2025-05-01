@@ -6,7 +6,7 @@ const DASH = 500 #change to 240 or less
 
 var enemy_inattack_range = false
 var enemy_attack_cooldown = true
-var health = 100
+var health = 370 #change to 170 aprox
 var player_alive = true
 
 
@@ -19,11 +19,12 @@ var ui_right = ("ui_right")
 var ui_up = ("ui_up")
 var ui_down = ("ui_down")
 
+var attack_ip = false
 
 @onready var sprite = $AnimatedSprite2D
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	velocity = input_direction * SPEED
 	if Input.is_action_pressed("ui_accept"):
 		dash_velocity = DASH
@@ -51,16 +52,20 @@ func _physics_process(delta):
 		set_animation("Dash")
 	
 	enemy_attack()
+	attack()
 	
 	if health <= 0:
 		player_alive = false #add end screen
 		health = 0
 		print("player has been killed")
 		self.queue_free()
+	
+	
 
 func set_animation(animation):
 	var direction = "Left" if sprite_direction in ["Left"] else sprite_direction
 	sprite.play(animation + direction)
+	
 	
 
 
@@ -110,3 +115,32 @@ func enemy_attack():
 
 func _on_attack_cooldown_timeout() -> void:
 	enemy_attack_cooldown = true
+
+func attack():
+	
+	if Input.is_action_pressed("attack"):
+		set_animation("Attack")
+	var direction = "Left" if sprite_direction in ["Left"] else sprite_direction
+	
+	if Input.is_action_just_pressed("attack"):
+		global.player_current_attack = true
+		attack_ip = true
+		if direction == "ui_right":
+			$AnimatedSprite2D.play("AttackRight")
+			$deal_attack_timer.start()
+		if direction == "ui_left":
+			$AnimatedSprite2D.play("AttackLeft")
+			$deal_attack_timer.start()
+		if direction == "ui_up":
+			$AnimatedSprite2D.play("AttackUp")
+			$deal_attack_timer.start()
+		if direction == "ui_down":
+			$AnimatedSprite2D.play("AttackDown")
+			$deal_attack_timer.start()
+		
+
+
+func _on_deal_attack_timer_timeout() -> void:
+	$deal_attack_timer.stop()
+	global.player_current_attack = false
+	attack_ip = false

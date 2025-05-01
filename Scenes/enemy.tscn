@@ -242,5 +242,11 @@ debug_color = Color(0.787449, 0.212592, 0.914529, 0.42)
 shape = SubResource("CircleShape2D_qgfe5")
 debug_color = Color(0.630254, 0.133579, 0.181548, 0.42)
 
+[node name="take_damage_cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_body_entered"]
+[connection signal="body_exited" from="EnemyHitbox" to="." method="_on_enemy_hitbox_body_exited"]
+[connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
