@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cmpqxvbpnlvbe"]
+[gd_scene load_steps=4 format=3 uid="uid://cmpqxvbpnlvbe"]
 
 [ext_resource type="Script" path="res://scripts/game_over.gd" id="1_2lucw"]
 [ext_resource type="FontFile" uid="uid://b5p6re34k2vuu" path="res://Sprites/gfx/retro.ttf" id="2_k05a7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8lid"]
+bg_color = Color(0.180392, 0.156863, 0.141176, 1)
 
 [node name="Game Over" type="Control"]
 layout_mode = 3
@@ -11,6 +14,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2lucw")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 1149.0
+offset_bottom = 644.0
+color = Color(0.180535, 0.157009, 0.142386, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -42,6 +51,29 @@ theme_override_colors/font_pressed_color = Color(0.408329, 0.408329, 0.408329, 1
 theme_override_fonts/font = ExtResource("2_k05a7")
 theme_override_font_sizes/font_size = 25
 text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 119.0
+offset_right = 944.0
+offset_bottom = 247.0
+theme_override_colors/font_color = Color(0.423695, 0.0758853, 0.0490083, 1)
+theme_override_colors/font_outline_color = Color(0.066097, 2.43286e-07, 1.36872e-07, 1)
+theme_override_constants/outline_size = 30
+theme_override_fonts/font = ExtResource("2_k05a7")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_u8lid")
+text = "Game - Over"
+
+[node name="Label" type="Label" parent="Label"]
+layout_mode = 0
+offset_left = 206.0
+offset_top = 296.0
+offset_right = 505.0
+offset_bottom = 322.0
+theme_override_fonts/font = ExtResource("2_k05a7")
+text = "Tip: Kill All The Enemies To Win"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

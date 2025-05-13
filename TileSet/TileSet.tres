@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://b8dq8mqxt4gur"]
+[gd_resource type="TileSet" load_steps=13 format=3 uid="uid://b8dq8mqxt4gur"]
 
 [ext_resource type="Texture2D" uid="uid://b23sp8d8hdtfp" path="res://Sprites/gfx/Overworld.png" id="1_k0tuw"]
 [ext_resource type="Texture2D" uid="uid://dgopv1ib8blcc" path="res://Sprites/Collision/New Piskel.png" id="2_fxc20"]
 [ext_resource type="Texture2D" uid="uid://cgu3e6mofk425" path="res://Sprites/gfx/tilesetStart5.png" id="2_u63x0"]
 [ext_resource type="Texture2D" uid="uid://bg7kxvtfwk57w" path="res://Sprites/gfx/Terrian.png" id="3_wjkyr"]
 [ext_resource type="Texture2D" uid="uid://cpl2bqsliggmb" path="res://Sprites/gfx/Houses.png" id="4_be0pq"]
+[ext_resource type="Texture2D" uid="uid://cabhy7neyf7lf" path="res://Sprites/Collision/sanjdjajknjk.png" id="4_mp3sc"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ih2uf"]
 texture = ExtResource("1_k0tuw")
@@ -3911,6 +3912,13 @@ texture = ExtResource("2_u63x0")
 57:44/0 = 0
 58:44/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2p8l1"]
+texture = ExtResource("4_mp3sc")
+25:17/0 = 0
+26:17/0 = 0
+25:18/0 = 0
+26:18/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kkq62"]
 texture = ExtResource("3_wjkyr")
 0:0/0 = 0
@@ -5168,3 +5176,4 @@ sources/2 = SubResource("TileSetAtlasSource_0d00e")
 sources/4 = SubResource("TileSetAtlasSource_kkq62")
 sources/5 = SubResource("TileSetAtlasSource_m6crn")
 sources/1 = SubResource("TileSetAtlasSource_n8yyy")
+sources/3 = SubResource("TileSetAtlasSource_2p8l1")
