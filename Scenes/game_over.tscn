@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmpqxvbpnlvbe"]
+
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_2lucw"]
+[ext_resource type="FontFile" uid="uid://b5p6re34k2vuu" path="res://Sprites/gfx/retro.ttf" id="2_k05a7"]
+
+[node name="Game Over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2lucw")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+offset_right = 1151.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_colors/font_hover_pressed_color = Color(0.550035, 0.277761, 0.212724, 1)
+theme_override_colors/font_hover_color = Color(0.532243, 0.378037, 0.263866, 1)
+theme_override_colors/font_pressed_color = Color(0.517184, 0.517184, 0.517184, 1)
+theme_override_fonts/font = ExtResource("2_k05a7")
+theme_override_font_sizes/font_size = 25
+text = "Retry"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_pressed_color = Color(0.461373, 0.340051, 0.272752, 1)
+theme_override_colors/font_hover_color = Color(0.361169, 0.253765, 0.120009, 1)
+theme_override_colors/font_pressed_color = Color(0.408329, 0.408329, 0.408329, 1)
+theme_override_fonts/font = ExtResource("2_k05a7")
+theme_override_font_sizes/font_size = 25
+text = "Quit"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]

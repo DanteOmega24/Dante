@@ -1,9 +1,116 @@
-[gd_scene format=3 uid="uid://se3squsmrrvm"]
+[gd_scene load_steps=6 format=3 uid="uid://se3squsmrrvm"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Script" path="res://scripts/control.gd" id="1_tfvtj"]
+[ext_resource type="FontFile" uid="uid://b5p6re34k2vuu" path="res://Sprites/gfx/retro.ttf" id="2_ph87p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j3axy"]
+bg_color = Color(0.683021, 0.588245, 0.391041, 1)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_srfwu"]
+bg_color = Color(0.514284, 0.472464, 0.349131, 1)
+border_width_left = 10
+border_width_top = 5
+border_width_right = 10
+border_width_bottom = 5
+border_blend = true
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ehx60"]
+bg_color = Color(0.528737, 0.456146, 0.325651, 1)
+border_width_left = 15
+border_width_top = 15
+border_width_right = 15
+border_width_bottom = 15
+border_color = Color(0.341184, 0.275193, 0.139453, 1)
+border_blend = true
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+shadow_size = 20
+shadow_offset = Vector2(-20, 20)
+
+[node name="Menu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_tfvtj")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.547052, 0.462408, 0.361723, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -1.0
+offset_top = 2.0
+offset_right = 1149.0
+offset_bottom = 651.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_hover_color = Color(0.69159, 0.482214, 0.289825, 1)
+theme_override_colors/font_pressed_color = Color(0.72422, 0.45626, 0.345382, 1)
+theme_override_colors/icon_normal_color = Color(0.411001, 0.333699, 0.152053, 1)
+theme_override_constants/outline_size = 20
+theme_override_fonts/font = ExtResource("2_ph87p")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxFlat_j3axy")
+text = "Play"
+icon_alignment = 1
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_hover_color = Color(0.471287, 0.281487, 0.200149, 1)
+theme_override_colors/font_pressed_color = Color(0.724233, 0.496159, 0.298262, 1)
+theme_override_constants/outline_size = 15
+theme_override_fonts/font = ExtResource("2_ph87p")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_srfwu")
+text = "Quit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 69.0
+offset_right = 957.0
+offset_bottom = 197.0
+theme_override_colors/font_color = Color(0.0714174, 0.35559, 0.416751, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0.45265, 0.290232, 0.167005, 1)
+theme_override_constants/outline_size = 25
+theme_override_fonts/font = ExtResource("2_ph87p")
+theme_override_font_sizes/font_size = 100
+theme_override_styles/normal = SubResource("StyleBoxFlat_ehx60")
+text = "Slash - Hash"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

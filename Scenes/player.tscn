@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://bumlnahd7ptto"]
+[gd_scene load_steps=51 format=3 uid="uid://bumlnahd7ptto"]
 
 [ext_resource type="Texture2D" uid="uid://bfxkcxdygdqk1" path="res://Sprites/sprite-main-1.png" id="1_0kqqb"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_2l7sg"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bnj8hhe1t1uq6" path="res://Sprites/sprite-main-attack-front.png" id="2_fbqtk"]
 [ext_resource type="Texture2D" uid="uid://cvopm4ibjlod8" path="res://Sprites/sprite-main-directions.png" id="3_51gk5"]
 [ext_resource type="Texture2D" uid="uid://dsycgo0l3psfv" path="res://Sprites/sprite-main-block.png" id="3_ts0ts"]
+[ext_resource type="Texture2D" uid="uid://c6raralkp3bxs" path="res://Sprites/sprite-main-directions-attack_2.png" id="4_qoblo"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ydotw"]
 atlas = ExtResource("2_fbqtk")
@@ -32,13 +33,13 @@ region = Rect2(0, 100, 100, 100)
 atlas = ExtResource("2_fbqtk")
 region = Rect2(100, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_e2jng"]
-atlas = ExtResource("3_51gk5")
-region = Rect2(0, 300, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fi3aw"]
+atlas = ExtResource("4_qoblo")
+region = Rect2(0, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_nfrve"]
-atlas = ExtResource("3_51gk5")
-region = Rect2(0, 200, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkmiw"]
+atlas = ExtResource("4_qoblo")
+region = Rect2(0, 0, 100, 100)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s1d7y"]
 atlas = ExtResource("2_fbqtk")
@@ -187,11 +188,11 @@ animations = [{
 }],
 "loop": true,
 "name": &"AttackDown",
-"speed": 15.0
+"speed": 20.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_e2jng")
+"texture": SubResource("AtlasTexture_fi3aw")
 }],
 "loop": true,
 "name": &"AttackLeft",
@@ -199,7 +200,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_nfrve")
+"texture": SubResource("AtlasTexture_tkmiw")
 }],
 "loop": true,
 "name": &"AttackRight",
@@ -385,8 +386,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yh6p3"]
-radius = 15.0
-height = 63.89
+radius = 20.39
+height = 68.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a6qqm"]
 radius = 43.1741
@@ -400,7 +401,7 @@ scale = Vector2(2.1, 2.1)
 sprite_frames = SubResource("SpriteFrames_ah6dr")
 animation = &"AttackDown"
 autoplay = "IdleDown"
-frame_progress = 0.923499
+frame_progress = 0.942972
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_yh6p3")
@@ -422,7 +423,26 @@ wait_time = 0.5
 [node name="deal_attack_timer" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="dash_timer" type="Timer" parent="."]
+wait_time = 3.795
+
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.811765, 0.129412, 0.25098, 1)
+offset_left = -15.0
+offset_top = 39.0
+offset_right = 86.0
+offset_bottom = 66.0
+scale = Vector2(0.3, 0.3)
+max_value = 200.0
+show_percentage = false
+
+[node name="regin_timer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
 [connection signal="body_entered" from="PlayerHitbox" to="." method="_on_player_hitbox_body_entered"]
 [connection signal="body_exited" from="PlayerHitbox" to="." method="_on_player_hitbox_body_exited"]
 [connection signal="timeout" from="attack_cooldown" to="." method="_on_attack_cooldown_timeout"]
 [connection signal="timeout" from="deal_attack_timer" to="." method="_on_deal_attack_timer_timeout"]
+[connection signal="timeout" from="dash_timer" to="." method="_on_dash_timer_timeout"]
+[connection signal="timeout" from="regin_timer" to="." method="_on_regin_timer_timeout"]

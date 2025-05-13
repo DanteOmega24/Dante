@@ -245,8 +245,20 @@ debug_color = Color(0.630254, 0.133579, 0.181548, 0.42)
 [node name="take_damage_cooldown" type="Timer" parent="."]
 wait_time = 0.5
 
+[node name="healthbar" type="ProgressBar" parent="."]
+modulate = Color(0.350677, 0.238862, 0.832018, 1)
+offset_left = -34.0
+offset_top = 76.0
+offset_right = 67.0
+offset_bottom = 103.0
+scale = Vector2(0.6, 0.6)
+show_percentage = false
+
+[node name="regin_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
 [connection signal="body_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_body_entered"]
 [connection signal="body_exited" from="EnemyHitbox" to="." method="_on_enemy_hitbox_body_exited"]
 [connection signal="timeout" from="take_damage_cooldown" to="." method="_on_take_damage_cooldown_timeout"]
+[connection signal="timeout" from="regin_timer" to="." method="_on_regin_timer_timeout"]
