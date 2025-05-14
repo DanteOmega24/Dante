@@ -2,4 +2,7 @@ extends Node
 
 
 var player_current_attack = false
-#12.59
+
+
+var current_scene = "main"
+var transition_scene = false

@@ -23,11 +23,16 @@ var attack_ip = false
 var dash = DASH
 var dashTimeout = 0
 
+var transition_zone_range = false 
+
 
 var isAttackTriggered = 0
 
 @onready var sprite = $AnimatedSprite2D
 
+func _ready() -> void:
+	position.x = 0
+	position.y = -1
 
 func _physics_process(_delta):
 	
@@ -62,7 +67,6 @@ func _physics_process(_delta):
 	attack()
 	update_health()
 	game_over()
-
 	
 	if health <= 0:
 		player_alive = false #add end screen
@@ -100,12 +104,13 @@ func player():
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_inattack_range = true
-		
+	if body.has_method("transition_scene"):
+		transition_zone_range = true
+		get_tree().change_scene_to_file("res://Scenes/you_won.tscn")
 	
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_inattack_range = false
-		
 
 func enemy_attack():
 	if enemy_inattack_range and enemy_attack_cooldown == true:

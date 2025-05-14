@@ -408,6 +408,7 @@ shape = SubResource("CapsuleShape2D_yh6p3")
 metadata/_edit_lock_ = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(0, -1)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
 
