@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED = 70
+const SPEED = 100
 const DASH = 240 #change to 240 or less
 
 
