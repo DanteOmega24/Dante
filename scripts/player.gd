@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 const SPEED = 100
-const DASH = 700 #change to 240 or less
+const DASH = 240 #change to 240 or less
 
 
 var enemy_inattack_range = false
@@ -32,7 +32,7 @@ var isAttackTriggered = 0
 
 func _ready() -> void:
 	position.x = 0
-	position.y = 0
+	position.y = -1
 
 func _physics_process(_delta):
 	
@@ -104,6 +104,9 @@ func player():
 func _on_player_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("enemy"):
 		enemy_inattack_range = true
+	if body.has_method("transition_scene"):
+		transition_zone_range = true
+		get_tree().change_scene_to_file("res://Scenes/you_won.tscn")
 	
 func _on_player_hitbox_body_exited(body: Node2D) -> void:
 	if body.has_method("enemy"):
